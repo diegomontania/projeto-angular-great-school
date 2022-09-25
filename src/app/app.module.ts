@@ -8,6 +8,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
+// importacao para ngx-boostrap-icons
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { globe, code } from 'ngx-bootstrap-icons';
+
 import { AlunosComponent } from './alunos/alunos.component';
 import { ProfessoresComponent } from './professores/professores.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -16,6 +20,12 @@ import { NavComponent } from './nav/nav.component';
 import { TituloComponent } from './titulo/titulo.component';
 import { AnotacoesComponent } from './anotacoes/anotacoes.component';
 import { FooterComponent } from './footer/footer.component';
+
+// importando icones utilizados para ngx-boostrap-icons
+const icons = {
+  globe,
+  code
+};
 
 
 @NgModule({
@@ -39,7 +49,8 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    NgxBootstrapIconsModule.pick(icons)
   ],
   providers: [],
   bootstrap: [AppComponent]
