@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  titulo: string = "Dashboard - Pág inicial"; 
+  titulo: string = "GreatSchool - Uma nova escola está nascendo!"; 
 
   constructor() { }
 

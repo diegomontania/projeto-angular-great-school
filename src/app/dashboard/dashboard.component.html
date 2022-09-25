@@ -1,5 +1,19 @@
-<!-- passando valor de uma propriedade que está dentro do componente alunos.component
-    para o componente 'app-titulo'-->
-    <app-titulo [titulo]=titulo></app-titulo>
+<!-- passando valor de uma propriedade que está dentro do componente alunos.component para o componente 'app-titulo'-->
+<br>
+<app-titulo [titulo]=titulo></app-titulo>
 
-<p>dashboard works!</p>
+<br>
+<carousel [isAnimated]="true">
+    <slide>
+        <img src="assets/images/carrousel/1.jpg" alt="first slide" style="display: block; width: 100%;">
+    </slide>
+    <slide>
+        <img src="assets/images/carrousel/2.jpg" alt="second slide" style="display: block; width: 100%;">
+    </slide>
+    <slide>
+        <img src="assets/images/carrousel/3.jpg" alt="third slide" style="display: block; width: 100%;">
+    </slide>
+    <slide>
+        <img src="assets/images/carrousel/4.jpg" alt="third slide" style="display: block; width: 100%;">
+    </slide>
+</carousel>

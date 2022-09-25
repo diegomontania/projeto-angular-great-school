@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { AlunosComponent } from './alunos/alunos.component';
 import { ProfessoresComponent } from './professores/professores.component';
@@ -12,9 +15,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
 import { TituloComponent } from './titulo/titulo.component';
 import { AnotacoesComponent } from './anotacoes/anotacoes.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
-  declarations: [			
+  declarations: [					
     AppComponent,
     AlunosComponent,
     ProfessoresComponent,
@@ -22,13 +27,19 @@ import { AnotacoesComponent } from './anotacoes/anotacoes.component';
     DashboardComponent,
       NavComponent,
       TituloComponent,
-      AnotacoesComponent
+      AnotacoesComponent,
+      FooterComponent,
+      FooterComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

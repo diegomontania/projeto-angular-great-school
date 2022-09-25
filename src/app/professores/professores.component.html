@@ -8,25 +8,22 @@
         </div>
         <div class="col-sm-6 mt-2 d-grid justify-content-md-end">
             <!-- cria botao para tirar da seleção o item selecionado -->
-            <button class="btn btn-warning" (click)="voltar()">Lista de professores</button>
+            <button class="btn btn-outline-danger" (click)="voltar()">Fechar</button>
         </div>
     </div>
 
     <!-- inserindo formulario -->
-    <form>
+    <form [formGroup]="professorForm" (submit)="professorSubmit()">
         <div class="mb-3">
             <label for="formGroupExempleInput" class="form-label">Nome</label>
-            <input type="text" value="{{ professorSelecionado.nome }}" class="form-control" aria-describedby="emailHelp">
+            <input type="text" formControlName="nome" class="form-control" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="formGroupExempleInput2" class="form-label">Disciplina</label>
-            <input type="text" value="{{ professorSelecionado.disciplina }}" class="form-control" aria-describedby="emailHelp">
+            <input type="text"formControlName="disciplina" class="form-control" aria-describedby="emailHelp">
         </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button class="btn btn-success" type="submit" [disabled]="!professorForm.valid" >Submit</button>
     </form>
 
 </div>
@@ -43,15 +40,38 @@
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Disciplina</th>
+                <th scope="col">Detalhes Professor</th>
+                <th scope="col">Opcões</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let prof of professores" style="cursor: pointer;" (click)="professorSelected(prof)">
+            <tr *ngFor="let prof of professores">
                 <th scope="row">{{ prof.id }}</th>
                 <td>{{ prof.nome }}</td>
                 <td>{{ prof.disciplina }}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button class="btn btn-warning" (click)="professorSelected(prof)">Detalhes</button>
+                    </div> 
+                </td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button class="btn btn-primary" (click)="openModal(template)">Alunos</button>
+                    </div> 
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
 
+<!-- modal (especie de msgbox) -->
+<ng-template #template>
+    <div class="modal-header">
+        <!-- insere o componente dos alunos para aquele aluno -->
+        <!-- poderia ser qualquer outro componente ou uma mensagem aqui -->
+        <app-alunos></app-alunos>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn pull-right" (click)="modalRef?.hide()">Fechar</button>
+    </div>
+</ng-template>
