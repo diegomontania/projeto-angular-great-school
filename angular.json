@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SmartSchool": {
+    "GreatSchool": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "SmartSchool:build:production"
+              "browserTarget": "GreatSchool:build:production"
             },
             "development": {
-              "browserTarget": "SmartSchool:build:development"
+              "browserTarget": "GreatSchool:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SmartSchool:build"
+            "browserTarget": "GreatSchool:build"
           }
         },
         "test": {

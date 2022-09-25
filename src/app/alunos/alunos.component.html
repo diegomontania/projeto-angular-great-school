@@ -1,0 +1,70 @@
+<!-- <ul>
+    <h2>Lista utilizando for</h2>
+    <li *ngFor="let aluno of alunos">
+        {{ aluno.nome }}
+    </li>
+</ul> -->
+
+<!-- se não houver nenhum aluno selecionado
+se não houver nenhum valor dentro da variavel que está vindo do componente  -->
+<div *ngIf="alunoSelecionado">
+    
+    <div class="row">
+        <div class="col-sm-6 me-auto">
+            <!-- passando valor de uma propriedade que está dentro do componente alunos.component
+            para o componente 'app-titulo'-->
+            <app-titulo [titulo]="'Aluno ' + alunoSelecionado.id"></app-titulo> 
+        </div>
+        <div class="col-sm-6 mt-2 d-grid justify-content-md-end">
+            <!-- cria botao para tirar da seleção o item selecionado -->
+            <button class="btn btn-warning" (click)="voltar()">Lista de alunos</button>
+        </div>
+    </div>
+
+    <!-- inserindo formulario -->
+    <!-- e carregando as informacoes do aluno clicado, no formulario -->
+    <form>
+        <div class="mb-3">
+            <label for="formGroupExempleInput" class="form-label">Nome</label>
+            <input type="text" value="{{ alunoSelecionado.nome }}" class="form-control" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExempleInput2" class="form-label">Sobrenome</label>
+            <input type="text" value="{{ alunoSelecionado.sobrenome }}" class="form-control" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExempleInput3" class="form-label">Telefone</label>
+            <input type="text" value="{{ alunoSelecionado.telefone }}" class="form-control" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- se nao, exibe todos os alunos -->
+<div *ngIf="!alunoSelecionado">
+    <app-titulo [titulo]=titulo></app-titulo>
+
+    <!-- utilizando tabela para exibir informacoes de uma lista que esta dentro do componente -->
+    <table class="table table-hover">
+        <thead class="thread-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aluno of alunos" style="cursor: pointer;" (click)="alunoSelected(aluno)">
+                <th scope="row">{{ aluno.id }}</th>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.sobrenome }}</td>
+                <td>{{ aluno.telefone }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
