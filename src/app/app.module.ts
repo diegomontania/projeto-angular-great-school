@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { HttpClientModule } from '@angular/common/http'; // importando modulo de httClient para fazer conexao do angular com o a api .netcore
 
 // importacao para ngx-boostrap-icons
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
@@ -27,7 +28,6 @@ const icons = {
   code
 };
 
-
 @NgModule({
   declarations: [					
     AppComponent,
@@ -44,6 +44,7 @@ const icons = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BsDropdownModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
