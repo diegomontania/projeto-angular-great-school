@@ -1,16 +1,68 @@
-<!-- <ul>
-    <h2>Lista utilizando for</h2>
-    <li *ngFor="let aluno of alunos">
-        {{ aluno.nome }}
-    </li>
-</ul> -->
+<h2>Formulário cadastro</h2>
+
+<!-- fazendo if para exibir ou nao um alerta -->
+<!-- <div class="alert alert-success" role="alert" *ngIf="executadoComSucesso===true" style="margin-top: 10px">
+{{ mensagemParaUsuario }}
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="executadoComSucesso===false" style="margin-top: 10px">
+{{ mensagemParaUsuario }}
+</div> -->
+
+<form [formGroup]="alunoFormulario" (submit)="CriarNovoAluno()">
+
+    <!-- vinculando inputs as propriedade da classe 'cliente' para que as informacoes sejam enviadas para a api -->
+    <fieldset>
+        <div class="row g-3">
+            <!-- nome -->
+            <div class="col-sm-6">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" formControlName="nome" placeholder="Nome" required="">
+                <div class="invalid-feedback">
+                Nome is required.
+                </div>
+            </div>
+            <!-- sobrenome -->
+            <div class="col-sm-6">
+                <label for="sobrenome" class="form-label">Sobrenome</label>
+                <input type="text" class="form-control" formControlName="sobrenome" placeholder="Sobrenome" required="">
+                <div class="invalid-feedback">
+                Sobrenome is required.
+                </div>
+            </div>
+            <!-- email -->
+            <div class="col-sm-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Email" required="">
+                <div class="invalid-feedback">
+                Email is required.
+                </div>
+            </div>
+            <!-- telefone -->
+            <div class="col-sm-6">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" formControlName="telefone" placeholder="Telefone" required="">
+                <div class="invalid-feedback">
+                Telefone is required.
+                </div>
+            </div>
+            <!-- estado -->
+            <div class="col-6">
+                <label for="email" class="form-label">Estado</label>
+                <input type="email" class="form-control" formControlName="estado" placeholder="Estado">
+                <div class="invalid-feedback">
+                Estado is required.
+                </div>
+            </div>
+        </div>
+        
+        <!-- chama funcao Salvar que requisita a api e deixa o botao desabilitado se a propriedade 'nome' estiver vazia -->
+        <button class="btn btn-success" style="margin-top: 10px" [disabled]="!alunoFormulario.valid" type="submit" value="Submit">Salvar</button>
+    </fieldset>
+</form>
+
+<hr>
 
 <div class="row">
-
-    <!-- <div>
-        <input type="text" [(ngModel)]="textoSimples">
-        <p>{{ textoSimples }}</p>
-    </div> -->
 
     <!-- exibe todos os alunos -->
     <!-- ngClass para fazer uma condicional no estilo css, mudar de acordo com a variavel -->
@@ -25,7 +77,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Sobrenome</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Telefone</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Opções</th>
                 </tr>
             </thead>
@@ -35,7 +89,9 @@
                     <th scope="row">{{ aluno.id }}</th>
                     <td>{{ aluno.nome }}</td>
                     <td>{{ aluno.sobrenome }}</td>
+                    <td>{{ aluno.email }}</td>
                     <td>{{ aluno.telefone }}</td>
+                    <td>{{ aluno.estado }}</td>
                     <td>
                         <div class="btn-group-sm">
                             <button class="btn btn-warning m-lg-1" (click)="alunoSelected(aluno)">Detalhes</button>
@@ -65,23 +121,23 @@
 
         <!-- Utilizando reactive form de acordo com a variavel da classe 'alunoForm' -->
         <!-- fazendo binding das propriedades do objeto criado no metodo para criar foms. Utilizando 'formControlName' -->
-        <form [formGroup]="alunoForm" (submit)="alunoSubmit()">
+        <form [formGroup]="alunoFormulario" (submit)="alunoSubmit()">
             <div class="mb-3"> <!-- form-control -->
                 <label for="formGroupExempleInput" class="form-label">Nome</label>
-                <input type="text" formControlName="nome"  class="form-control" aria-describedby="emailHelp">
+                <input type="text" formControlName="nome" class="form-control" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="formGroupExempleInput2" class="form-label">Sobrenome</label>
-                <input type="text" formControlName="sobrenome"  class="form-control" aria-describedby="emailHelp">
+                <input type="text" formControlName="sobrenome" class="form-control" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="formGroupExempleInput3" class="form-label">Telefone</label>
-                <input type="text" formControlName="telefone"  class="form-control" aria-describedby="emailHelp">
+                <input type="text" formControlName="telefone" class="form-control" aria-describedby="emailHelp">
             </div>
 
             <!-- botao de enviar -->
             <!-- checa se todos os campos estao preenchidos -->
-            <button class="btn btn-success" type="submit" [disabled]="!alunoForm.valid">Enviar</button>
+            <button class="btn btn-success" type="submit" [disabled]="!alunoFormulario.valid">Enviar</button>
         </form>
     </div>
 

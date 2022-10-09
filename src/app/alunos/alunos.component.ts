@@ -12,17 +12,15 @@ import { AlunosService } from './alunos.service';
   styleUrls: ['./alunos.component.css']
 })
 export class AlunosComponent implements OnInit {
+  titulo :string = "Alunos";
 
   // criando propriedade formulario para fazer 'reactive form'
-  alunoForm: FormGroup;
+  alunoFormulario: FormGroup;
 
   // criando propriedade para o modal (especie de msgBox)
   modalRef?: BsModalRef;
 
   alunoSelecionado : Aluno | null;
-  titulo :string = "Alunos";
-
-  textoSimples: string;
 
   executadoComSucesso: boolean | undefined;
   mensagemParaUsuario: string | undefined;
@@ -35,15 +33,29 @@ export class AlunosComponent implements OnInit {
   // passando no construtor o builder do formulario
   // passando no construtor o servico do modal
   constructor(private formBuilder: FormBuilder, private modalService: BsModalService, private alunosService: AlunosService) { 
-    this.criarForm();
+    this.criarFormulario();
   }
 
   ngOnInit(): void {
+    this.RecebeTodosOsAlunos();
+  }
 
+  RecebeTodosOsAlunos(): void {
     //faz um GET de fato para trazer os dados, do serviço - https://stackoverflow.com/a/58726841/13156642
-    const test = this.alunosService.GetAlunos().subscribe((_alunoRetornadoAPI: Aluno[]) => {
+    this.alunosService.RecebeTodosAlunos().subscribe((_alunoRetornadoAPI: Aluno[]) => {
       //VER COMO RECEBER O ERRO CASO OCORRA, PARA DAR RESPOSTA AO USUARIO https://stackoverflow.com/a/45427080/13156642 (tentar implementar)
       this.alunos = _alunoRetornadoAPI;
+    },error => {
+      this.ExibeErro(error);
+    });
+  }
+
+  CriarNovoAluno(): void {
+    // debugger
+    let novoAluno = this.alunoFormulario.value;
+
+    this.alunosService.CriaNovoAluno(novoAluno).subscribe((_alunoRetornadoAPI: Aluno) => {
+      this.RecebeTodosOsAlunos();
     },error => {
       this.ExibeErro(error);
     });
@@ -53,33 +65,36 @@ export class AlunosComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  // para envio do formulario
-  alunoSubmit() :void {
-    console.log(this.alunoForm.value);
-  }
-
   // metodo para criar 'reactive form', para criar um formulario com as propriedades do objeto
-  criarForm():void  {
+  criarFormulario():void  {
     //formBuilder.group, agrupa os campos do formulario
-    this.alunoForm = this.formBuilder.group(
+    this.alunoFormulario = this.formBuilder.group(
 
       // cria um objeto de formulario sem informacoes, com os mesmos campos que estao html
       // utiliza tambem validor de campos
       {
         nome: ['', Validators.required],
         sobrenome: ['', Validators.required],
-        telefone: ['', Validators.required]
+        email: ['', Validators.required],
+        telefone: ['', Validators.required],
+        estado : ['', Validators.required],
       }
     );
   }
 
+  // para envio do formulario
+  alunoSubmit(): void {
+    console.log(this.alunoFormulario.value);
+  }
+  
   //funcao que recebe o aluno selecionado
   alunoSelected(aluno: Aluno):void {
+    debugger
     this.alunoSelecionado = aluno;
 
     //utilizando patchValue, para pegar os valores dos campos do item selecionado
     //e inserir no reactive form que foi criado
-    this.alunoForm.patchValue(aluno);
+    this.alunoFormulario.patchValue(aluno);
   }
 
   // limpa o nome do aluno selecionado para que fique vazio
