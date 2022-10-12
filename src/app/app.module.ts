@@ -13,14 +13,19 @@ import { HttpClientModule } from '@angular/common/http'; // importando modulo de
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { globe, code } from 'ngx-bootstrap-icons';
 
-import { AlunosComponent } from './alunos/alunos.component';
-import { ProfessoresComponent } from './professores/professores.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavComponent } from './nav/nav.component';
-import { TituloComponent } from './titulo/titulo.component';
-import { AnotacoesComponent } from './anotacoes/anotacoes.component';
-import { FooterComponent } from './footer/footer.component';
+import { AlunosComponent } from './Page-Components/alunos/alunos.component';
+import { ProfessoresComponent } from './Page-Components/professores/professores.component';
+import { PerfilComponent } from './Page-Components/perfil/perfil.component';
+import { HomeComponent } from './Page-Components/home/home.component';
+import { AnotacoesComponent } from './Page-Components/anotacoes/anotacoes.component';
+
+import { NavComponent } from './Nested-Components/nav/nav.component';
+import { TituloComponent } from './Nested-Components/titulo/titulo.component';
+import { FooterComponent } from './Nested-Components/footer/footer.component';
+import { AlunosListaComponent } from './Nested-Components/alunos-lista/alunos-lista.component';
+import { AlunoComponent } from './Nested-Components/aluno/aluno.component';
+import { FormCadastroComponent } from './Nested-Components/form-cadastro/form-cadastro.component';
+
 
 // importando icones utilizados para ngx-boostrap-icons
 const icons = {
@@ -29,17 +34,20 @@ const icons = {
 };
 
 @NgModule({
-  declarations: [					
+  declarations: [						
     AppComponent,
     AlunosComponent,
     ProfessoresComponent,
     PerfilComponent,
-    DashboardComponent,
-      NavComponent,
-      TituloComponent,
-      AnotacoesComponent,
-      FooterComponent,
-      FooterComponent
+    HomeComponent,
+    NavComponent,
+    TituloComponent,
+    AnotacoesComponent,
+    FooterComponent,
+    FooterComponent,
+    AlunosListaComponent,
+    AlunoComponent,
+    FormCadastroComponent
    ],
   imports: [
     BrowserModule,

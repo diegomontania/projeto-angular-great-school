@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
-import { Professor } from '../Models/Professor';
+import { Professor } from '../../Models/Professor';
 
 @Component({
   selector: 'app-professores',

@@ -1,8 +1,9 @@
 export class Aluno {
-    id: Number;
-    nome: string;
-    sobrenome : string;
-    email: string;
-    telefone : string;
-    estado : string;
+
+    public id: string;
+    public nome: string;
+    public sobrenome : string;
+    public email: string;
+    public telefone : string;
+    public estado : string;
 }
