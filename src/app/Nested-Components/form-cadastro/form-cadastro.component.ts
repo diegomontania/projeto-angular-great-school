@@ -33,10 +33,6 @@ export class FormCadastroComponent implements OnInit {
     this.CriarReactiveForm();
   }
 
-  ngOnDestroy():void{
-    this._subscriptionServico.unsubscribe();
-  }
-
   CriarNovoAluno(): void {
     // debugger
     let novoAluno = this.formularioCadastroAluno.value;
@@ -51,6 +47,9 @@ export class FormCadastroComponent implements OnInit {
 
           //passa para o metodo do componente pai o objeto eventEmitter com um parametro
           this.ExibeMensagemAposAcao.emit({param1: true});
+          
+          //reseta os campos
+          this.formularioCadastroAluno.reset();
         },
         
         //caso ocorra um erro, armazena em uma arrow function
@@ -63,6 +62,9 @@ export class FormCadastroComponent implements OnInit {
           this.ExibeMensagemAposAcao.emit({param1:false, param2:this._errorMessageAPI});
         }
       });
+
+      //para evitar erro das rotas no OnDestroy
+      this._subscriptionServico.unsubscribe();
   }
 
   // metodo para criar 'reactive form', para criar um formulario com as propriedades do objeto

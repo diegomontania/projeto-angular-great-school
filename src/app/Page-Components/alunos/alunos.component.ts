@@ -142,7 +142,7 @@ export class AlunosComponent implements OnInit {
   public ExibeMensagemAposAcao(error: any): void {
     // aqui recebe um objeto do tipo 'EventEmitter' que pode ter N parametros ou uma Boolean.
     // Um 'EventEmitter', quantidade e o tipo dos parametros são de acordo com quem envia
-    debugger
+    // debugger
     let executadoComSucesso: boolean;
 
     // if para testar se o tipo passado neste método é bool ou 'EventEmitter'
