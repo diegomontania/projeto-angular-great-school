@@ -124,12 +124,13 @@ export class AlunosComponent implements OnInit {
       // cria um objeto de formulario sem informacoes, com os mesmos campos que estao html
       // utiliza tambem validor de campos
       {
-        id: ['', Validators.required],
-        nome: ['', Validators.required],
-        sobrenome: ['', Validators.required],
-        email: ['', Validators.required],
-        telefone: ['', Validators.required],
-        estado : ['', Validators.required],
+        Id: ['', Validators.required],
+        Nome: ['', Validators.required],
+        Sobrenome: ['', Validators.required],
+        Email: ['', Validators.required],
+        Telefone: ['', Validators.required],
+        Estado : ['', Validators.required],
+        DataMatricula : ['', Validators.required],
       }
     );
   }

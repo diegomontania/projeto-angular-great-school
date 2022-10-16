@@ -32,16 +32,16 @@ export class AlunosService {
   }
 
   public CriaNovoAluno(aluno: Aluno): Observable<Aluno>{
-    // debugger
+    debugger
 
-    // transforma o objeto recebido com id em um objeto que nao possua
-    // para que seja possivel fazer o put corretamente
-    // let novoAluno = new Aluno();
-    // novoAluno.nome = aluno.nome;
-    // novoAluno.sobrenome = aluno.sobrenome;
-    // novoAluno.email = aluno.email;
-    // novoAluno.telefone = aluno.telefone;
-    // novoAluno.estado = aluno.estado;
+    // precisam ser feitas validacoes corretas no formulario 
+    // para enviar os dados ja formatados ao backend
+
+    //temporario, o backend esta com regex no campo de telefone
+    aluno.telefone = '(21) 97213-2706'
+
+    //temporario, o backend esta com limitacao de caracter no estado
+    aluno.estado = 'rj'
 
     return this.http.post<Aluno>(this.UrlAPI(), aluno).pipe(
       tap(data => console.log('All: ', JSON.stringify(data))),

@@ -1,7 +1,4 @@
 
-<!-- fazendo if para exibir ou nao um alerta -->
-
-
 <!-- adiciona formulario de cadastro -->
 <!-- chamando metodo para o metodo do objeto pai sem parametros e com parametros, utilizando o objeto EventEmitter -->
 <app-form-cadastro (RecebeTodosOsAlunos)="RecebeTodosOsAlunos()" (ExibeMensagemAposAcao)="ExibeMensagemAposAcao($event)"></app-form-cadastro>
@@ -24,6 +21,7 @@
                   <th scope="col">Email</th>
                   <th scope="col">Telefone</th>
                   <th scope="col">Estado</th>
+                  <th scope="col">DataMatricula</th>
                   <th scope="col">Opções</th>
               </tr>
           </thead>
@@ -36,6 +34,7 @@
                   <td>{{ aluno.email }}</td>
                   <td>{{ aluno.telefone }}</td>
                   <td>{{ aluno.estado }}</td>
+                  <td>{{ aluno.dataMatricula | date:'dd/MM/yyyy'}}</td>
                   <td>
                       <div class="btn-group-sm">
                           
@@ -72,6 +71,8 @@
   </div>
 </ng-template>
 
+
+<!-- fazendo if para exibir ou nao um alerta -->
 <ng-template #MensagemAposAcao>
     <div class="modal-body">
         <div class="alert alert-success" role="alert" *ngIf="executadoComSucesso===true" style="margin-top: 10px">

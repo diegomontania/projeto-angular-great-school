@@ -6,4 +6,5 @@ export class Aluno {
     public email: string;
     public telefone : string;
     public estado : string;
+    public dataMatricula : Date;
 }

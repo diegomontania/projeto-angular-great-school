@@ -40,6 +40,7 @@ export class AlunoComponent implements OnInit {
         email: this.aluno.email,
         telefone: this.aluno.telefone,
         estado : this.aluno.estado,
+        dataMatricula : this.aluno.dataMatricula,
       }
     );
   }

@@ -50,6 +50,9 @@ export class FormCadastroComponent implements OnInit {
           
           //reseta os campos
           this.formularioCadastroAluno.reset();
+
+          //para evitar erro das rotas no OnDestroy
+          this._subscriptionServico.unsubscribe();
         },
         
         //caso ocorra um erro, armazena em uma arrow function
@@ -62,9 +65,6 @@ export class FormCadastroComponent implements OnInit {
           this.ExibeMensagemAposAcao.emit({param1:false, param2:this._errorMessageAPI});
         }
       });
-
-      //para evitar erro das rotas no OnDestroy
-      this._subscriptionServico.unsubscribe();
   }
 
   // metodo para criar 'reactive form', para criar um formulario com as propriedades do objeto
@@ -77,9 +77,10 @@ export class FormCadastroComponent implements OnInit {
       {
         nome: ['', Validators.required],
         sobrenome: ['', Validators.required],
-        email: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
         telefone: ['', Validators.required],
-        estado : ['', Validators.required],
+        estado : ['', [Validators.required, Validators.min(2), Validators.max(2)]],
+        dataMatricula : ['', Validators.required]
       }
     );
   }
