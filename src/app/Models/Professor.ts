@@ -1,5 +1,8 @@
+import { Turma } from "./Turma";
+
 export class Professor {
-    id: Number;
-    nome: string;
-    disciplina : string;
+    public id: Number;
+    public nome: string;
+    public disciplina : string;
+    public Turma: Turma;
 }

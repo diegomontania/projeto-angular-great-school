@@ -34,6 +34,7 @@ export class ProfessoresComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger
   }
 
   openModal(template: TemplateRef<any>) {

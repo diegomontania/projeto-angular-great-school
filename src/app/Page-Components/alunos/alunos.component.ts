@@ -24,12 +24,14 @@ export class AlunosComponent implements OnInit {
   private _modalService: BsModalService;
   modalRef?: BsModalRef | null;
 
+  exibeModalAlteracao:boolean = false;
+
   @Output() executadoComSucesso: boolean;
   mensagemParaUsuario: string | undefined;
 
   titulo :string = "Alunos";
 
-  alunoSelecionado : Aluno | null;
+  alunoSelecionado : Aluno;
 
   alunos: Aluno[];
 
@@ -47,8 +49,8 @@ export class AlunosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.CriarReactiveForm();
     this.RecebeTodosOsAlunos();
+    // this.CriarReactiveForm();
   }
 
   ngOnDestroy():void{
@@ -76,20 +78,7 @@ export class AlunosComponent implements OnInit {
 
   //funcao que recebe o aluno selecionado
   AlteraAluno(template: TemplateRef<any>):void {
-    // debugger
-    this.modalRef = this._modalService.show(template); //, { id: 1, class: 'modal-lg' });
-
-    //se der bem sucedida a alteracao ou nao, recebe novamente todos os alunos
-    // pegar do componente pai
-    // this.RecebeTodosOsAlunos();
-    // debugger
-      
-    //   if (!this.modalRef) {
-    //     return;
-    //   }
-    
-    // this.modalRef.hide();
-    // this.modalRef = null;
+    this.modalRef = this._modalService.show(template);
   }
 
   DeletarAluno(aluno: Aluno): void {
@@ -106,10 +95,7 @@ export class AlunosComponent implements OnInit {
     });
   }
 
-  // limpa o nome do aluno selecionado para que fique vazio
-  public FecharFormAlteracao():void {
-    // this.alunoSelecionado = null;
-  }
+  // melhorar a criacao desse reactive form, pois esta sendo criado no componente de cadastro
 
   // a solucao de 'ExibeMensagemAposAcao' podera ser utilizada para criar o 'CriarReactiveForm', 
   // passando o event como um objeto e os campos serao as propriedades deste objeto 
@@ -117,23 +103,23 @@ export class AlunosComponent implements OnInit {
   // componentes filhos
 
   // metodo para criar 'reactive form', para criar um formulario com as propriedades do objeto
-  CriarReactiveForm():void  {
-    //formBuilder.group, agrupa os campos do formulario
-    this.formulario = this._formBuilder.group(
+  // CriarReactiveForm():void  {
+  //   //formBuilder.group, agrupa os campos do formulario
+  //   this.formulario = this._formBuilder.group(
 
-      // cria um objeto de formulario sem informacoes, com os mesmos campos que estao html
-      // utiliza tambem validor de campos
-      {
-        Id: ['', Validators.required],
-        Nome: ['', Validators.required],
-        Sobrenome: ['', Validators.required],
-        Email: ['', Validators.required],
-        Telefone: ['', Validators.required],
-        Estado : ['', Validators.required],
-        DataMatricula : ['', Validators.required],
-      }
-    );
-  }
+  //     // cria um objeto de formulario sem informacoes, com os mesmos campos que estao html
+  //     // utiliza tambem validor de campos
+  //     {
+  //       Id: ['', Validators.required],
+  //       Nome: ['', Validators.required],
+  //       Sobrenome: ['', Validators.required],
+  //       Email: ['', Validators.required],
+  //       Telefone: ['', Validators.required],
+  //       Estado : ['', Validators.required],
+  //       DataMatricula : ['', Validators.required],
+  //     }
+  //   );
+  // }
   
   public AbrirModal(template: TemplateRef<any>): void {
     this.modalRef = this._modalService.show(template);
@@ -150,7 +136,7 @@ export class AlunosComponent implements OnInit {
     if(typeof(error) == "boolean"){
       executadoComSucesso = this.ConverteParaBoleano(error);
     }
-    else{
+    else {
       executadoComSucesso = error.param1;
     }
 

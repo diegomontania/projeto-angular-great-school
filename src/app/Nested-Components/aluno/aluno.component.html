@@ -3,74 +3,68 @@
 <!-- tentar pegar o modal desse html aqui para fecha-lo -->
 <!-- https://valor-software.com/ngx-bootstrap/#/components/modals?tab=overview -->
 
-<!-- criar um servico de modal, achei bacana -->
-<!-- https://stackoverflow.com/questions/53049100/how-open-modal-from-one-component-into-another-component-in-angular -->
-
-<form [formGroup]="formulario" (submit)="AlterarAluno()">
-  <!-- vinculando inputs as propriedade da classe 'cliente' para que as informacoes sejam enviadas para a api -->
-  <fieldset>
-      <div class="row g-3">
-          <!-- id -->
-          <div class="col-sm-6">
-              <label for="id" class="form-label">Id</label>
-              <input type="text" class="form-control" [attr.disabled]="true" formControlName="id" placeholder="Id" required="">
-              <div class="invalid-feedback">
-              Nome is required.
-              </div>
-          </div>
-          <!-- nome -->
-          <div class="col-sm-6">
-              <label for="nome" class="form-label">Nome</label>
-              <input type="text" class="form-control" formControlName="nome" placeholder="Nome" required="">
-              <div class="invalid-feedback">
-              Nome is required.
-              </div>
-          </div>
-          <!-- sobrenome -->
-          <div class="col-sm-6">
-              <label for="sobrenome" class="form-label">Sobrenome</label>
-              <input type="text" class="form-control" formControlName="sobrenome" placeholder="Sobrenome" required="">
-              <div class="invalid-feedback">
-              Sobrenome is required.
-              </div>
-          </div>
-          <!-- email -->
-          <div class="col-sm-6">
-              <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" formControlName="email" placeholder="Email" required="">
-              <div class="invalid-feedback">
-              Email is required.
-              </div>
-          </div>
-          <!-- telefone -->
-          <div class="col-sm-6">
-              <label for="telefone" class="form-label">Telefone</label>
-              <input type="text" class="form-control" formControlName="telefone" placeholder="Telefone" required="">
-              <div class="invalid-feedback">
-                  Telefone is required.
-              </div>
-          </div>
-          <!-- estado -->
-          <div class="col-6">
-              <label for="estado" class="form-label">Estado</label>
-              <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
-              <div class="invalid-feedback">
-                  Estado is required.
-              </div>
-          </div>
-          <div class="col-6">
-            <label for="dataMatricula" class="form-label">Data Matricula</label>
-            <input type="text" class="form-control" formControlName="dataMatricula" placeholder="Data Matricula">
-            <div class="invalid-feedback">
-                Data Matricula is required.
+<form [formGroup]="formularioAlteracaoAluno" (submit)="AlterarAluno()">
+    <!-- vinculando inputs as propriedade da classe 'cliente' para que as informacoes sejam enviadas para a api -->
+    <fieldset>
+        <div class="row g-3">
+            <!-- id -->
+            <div class="col-sm-6">
+                <label for="id" class="form-label">Id</label>
+                <input type="text" class="form-control" [attr.disabled]="true" formControlName="id" placeholder="Id" required="">
+                <div class="invalid-feedback">
+                Nome is required.
+                </div>
+            </div>
+            <!-- nome -->
+            <div class="col-sm-6">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" formControlName="nome" placeholder="Nome" required="">
+                <div class="invalid-feedback">
+                Nome is required.
+                </div>
+            </div>
+            <!-- sobrenome -->
+            <div class="col-sm-6">
+                <label for="sobrenome" class="form-label">Sobrenome</label>
+                <input type="text" class="form-control" formControlName="sobrenome" placeholder="Sobrenome" required="">
+                <div class="invalid-feedback">
+                Sobrenome is required.
+                </div>
+            </div>
+            <!-- email -->
+            <div class="col-sm-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Email" required="">
+                <div class="invalid-feedback">
+                Email is required.
+                </div>
+            </div>
+            <!-- telefone -->
+            <div class="col-sm-6">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" formControlName="telefone" placeholder="Telefone" required="">
+                <div class="invalid-feedback">
+                    Telefone is required.
+                </div>
+            </div>
+            <!-- estado -->
+            <div class="col-6">
+                <label for="estado" class="form-label">Estado</label>
+                <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
+                <div class="invalid-feedback">
+                    Estado is required.
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="dataMatricula" class="form-label">Data Matricula</label>
+                <input type="text" class="form-control" formControlName="dataMatricula" placeholder="Data Matricula">
+                <div class="invalid-feedback">
+                    Data Matricula is required.
+                </div>
             </div>
         </div>
-      </div>
-      
-      <!-- chama funcao Salvar que requisita a api e deixa o botao desabilitado se a propriedade 'nome' estiver vazia -->
-      <button class="btn btn-success" style="margin-top: 10px" [disabled]="!formulario.valid" type="submit">Salvar</button>
-  </fieldset>
-</form>
-
-
-
+        
+        <!-- chama funcao Salvar que requisita a api e deixa o botao desabilitado se a propriedade 'nome' estiver vazia -->
+        <button class="btn btn-success" style="margin-top: 10px" [disabled]="!formularioAlteracaoAluno.valid" type="submit">Salvar</button>
+    </fieldset>
+    </form>

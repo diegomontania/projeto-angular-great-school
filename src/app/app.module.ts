@@ -52,7 +52,6 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     TituloComponent,
     AnotacoesComponent,
     FooterComponent,
-    FooterComponent,
     AlunosListaComponent,
     AlunoComponent,
     FormCadastroComponent

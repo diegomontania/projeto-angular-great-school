@@ -8,53 +8,54 @@
   <!-- exibe todos os alunos -->
   <!-- ngClass para fazer uma condicional no estilo css, mudar de acordo com a variavel -->
   <!-- se aluno estiver selecionado, mude o tamanho, para 'col-sm-6' se nao exibe como 'col-sm-12' -->
-  <div class="col-sm-12" >
-      <app-titulo [titulo]=titulo></app-titulo>
+    <div class="col-sm-12" >
+        <app-titulo [titulo]=titulo></app-titulo>
 
-      <!-- utilizando tabela para exibir informacoes de uma lista que esta dentro do componente -->
-      <table class="table table-hover">
-          <thead class="thread-light">
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Sobrenome</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Telefone</th>
-                  <th scope="col">Estado</th>
-                  <th scope="col">DataMatricula</th>
-                  <th scope="col">Opções</th>
-              </tr>
-          </thead>
-          <tbody>
-              <!-- carregando as informacoes do aluno em um formulario ao clicar sobre a linha da tabela -->
-              <tr *ngFor="let aluno of alunos">
-                  <th scope="row">{{ aluno.id }}</th>
-                  <td>{{ aluno.nome }}</td>
-                  <td>{{ aluno.sobrenome }}</td>
-                  <td>{{ aluno.email }}</td>
-                  <td>{{ aluno.telefone }}</td>
-                  <td>{{ aluno.estado }}</td>
-                  <td>{{ aluno.dataMatricula | date:'dd/MM/yyyy'}}</td>
-                  <td>
-                      <div class="btn-group-sm">
-                          
-                          <!-- modal para alteracao do registro -->
-                          <ng-template #modalAlteracao>
-                              <div class="modal-body">
-                                  <app-aluno [aluno]="aluno"></app-aluno>
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn pull-right" (click)="modalRef?.hide()">Fechar</button>
-                              </div>
-                          </ng-template>
+        <!-- utilizando tabela para exibir informacoes de uma lista que esta dentro do componente -->
+        <table class="table table-hover">
+            <thead class="thread-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">DataMatricula</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- carregando as informacoes do aluno em um formulario ao clicar sobre a linha da tabela -->
+                <tr *ngFor="let aluno of alunos">
+                    <th scope="row">{{ aluno.id }}</th>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.sobrenome }}</td>
+                    <td>{{ aluno.email }}</td>
+                    <td>{{ aluno.telefone }}</td>
+                    <td>{{ aluno.estado }}</td>
+                    <td>{{ aluno.dataMatricula | date:'dd/MM/yyyy'}}</td>
+                    <td>
+                        <div class="btn-group-sm">
+                            <!-- criar um servico de modal, achei bacana -->
+                            <!-- https://stackoverflow.com/questions/53049100/how-open-modal-from-one-component-into-another-component-in-angular -->
 
-                          <button class="btn btn-warning m-lg-1" (click)="AlteraAluno(modalAlteracao)">Alterar</button>
-                          <button class="btn btn-danger m-lg-1" (click)="DeletarAluno(aluno)">Deletar</button>
-                          <button class="btn btn-primary m-lg-1" (click)="AbrirModal(template)" >Professores</button>
-                      </div>
-                  </td>
-              </tr>
-          </tbody>
+                            <!-- modal para alteracao do registro -->
+                            <ng-template #modalAlteracao>
+                                <div class="modal-body">
+                                    <app-aluno [aluno]="aluno" (ExibeMensagemAposAcao)="ExibeMensagemAposAcao($event)"></app-aluno>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn pull-right" (click)="modalRef?.hide()">Fechar</button>
+                                </div>
+                            </ng-template>
+                            <button class="btn btn-warning m-lg-1" (click)="AlteraAluno(modalAlteracao)">Alterar</button>
+                            <button class="btn btn-danger m-lg-1" (click)="DeletarAluno(aluno)">Deletar</button>
+                            <button class="btn btn-primary m-lg-1" (click)="AbrirModal(template)" >Professores</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
       </table>
     </div>
 </div>
@@ -71,7 +72,6 @@
   </div>
 </ng-template>
 
-
 <!-- fazendo if para exibir ou nao um alerta -->
 <ng-template #MensagemAposAcao>
     <div class="modal-body">
@@ -86,7 +86,6 @@
         <button type="button" class="btn pull-right" (click)="modalRef?.hide()">Fechar</button>
     </div>
 </ng-template>
-
 
 <!-- adiciona lista de alunos -->
 <!-- <app-alunos-lista></app-alunos-lista> -->
