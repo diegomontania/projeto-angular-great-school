@@ -24,7 +24,7 @@ export class FormCadastroComponent implements OnInit {
   @Output('RecebeTodosOsAlunos') RecebeTodosOsAlunos: EventEmitter<any> = new EventEmitter();
   @Output('ExibeMensagemAposAcao') ExibeMensagemAposAcao: EventEmitter<any> = new EventEmitter();
 
-  constructor(formBuilder: FormBuilder, alunosService: AlunosService) { 
+  constructor(formBuilder: FormBuilder, alunosService: AlunosService) {
     this._alunoService = alunosService;
     this._formBuilder = formBuilder;
   }
@@ -36,6 +36,7 @@ export class FormCadastroComponent implements OnInit {
   CriarNovoAluno(): void {
     // debugger
     let novoAluno = this.formularioCadastroAluno.value;
+    novoAluno.estado = novoAluno.estado.toUpperCase();
 
     this._alunoService.CriaNovoAluno(novoAluno).subscribe({
         //cria uma variavel temporaria que recebe a resposta da api e associa a variavel utilizada
@@ -47,14 +48,14 @@ export class FormCadastroComponent implements OnInit {
 
           //passa para o metodo do componente pai o objeto eventEmitter com um parametro
           this.ExibeMensagemAposAcao.emit({param1: true});
-          
+
           //reseta os campos
           this.formularioCadastroAluno.reset();
 
           //para evitar erro das rotas no OnDestroy
           this._subscriptionServico.unsubscribe();
         },
-        
+
         //caso ocorra um erro, armazena em uma arrow function
         //e passa para uma variavel armazene-o para exibir no log
         error: err => {
@@ -71,16 +72,15 @@ export class FormCadastroComponent implements OnInit {
   CriarReactiveForm():void  {
     //formBuilder.group, agrupa os campos do formulario
     this.formularioCadastroAluno = this._formBuilder.group(
-
       // cria um objeto de formulario sem informacoes, com os mesmos campos que estao html
-      // utiliza tambem validor de campos
+      // utiliza tambem validor de campos, cada campo é um controle de formulario
       {
-        nome: ['', Validators.required],
-        sobrenome: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        telefone: ['', Validators.required],
-        estado : ['', [Validators.required, Validators.min(2), Validators.max(2)]],
-        dataMatricula : ['', Validators.required]
+        nome: [null, Validators.required],
+        sobrenome: [null, Validators.required],
+        email: [null, [Validators.required, Validators.email]],
+        telefone: [null, Validators.required],
+        estado : [null, [Validators.required, Validators.min(2), Validators.max(2)]],
+        dataMatricula : [null, Validators.required]
       }
     );
   }

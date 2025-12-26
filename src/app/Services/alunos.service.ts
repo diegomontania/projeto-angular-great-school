@@ -34,14 +34,14 @@ export class AlunosService {
   public CriaNovoAluno(aluno: Aluno): Observable<Aluno>{
     debugger
 
-    // precisam ser feitas validacoes corretas no formulario 
+    // precisam ser feitas validacoes corretas no formulario
     // para enviar os dados ja formatados ao backend
 
     //temporario, o backend esta com regex no campo de telefone
-    aluno.telefone = '(21) 97213-2706'
+    //aluno.telefone = '(21) 97213-2706'
 
     //temporario, o backend esta com limitacao de caracter no estado
-    aluno.estado = 'rj'
+    //aluno.estado = 'rj'
 
     return this.http.post<Aluno>(this.UrlAPI(), aluno).pipe(
       tap(data => console.log('All: ', JSON.stringify(data))),
@@ -69,7 +69,7 @@ export class AlunosService {
 
   private UrlAPI(restanteCaminhoUrl?:string): string {
     // debugger
-    let URL_PADRAO_API_SERVER: string = "https://localhost:44385/alunos";
+    let URL_PADRAO_API_SERVER: string = "https://localhost:5001/alunos";
 
     //se ao chamar o metodo, passar um caminho extra na url, some a url padrao
     if(restanteCaminhoUrl != null){

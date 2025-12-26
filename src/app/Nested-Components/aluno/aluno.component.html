@@ -3,6 +3,9 @@
 <!-- tentar pegar o modal desse html aqui para fecha-lo -->
 <!-- https://valor-software.com/ngx-bootstrap/#/components/modals?tab=overview -->
 
+<!-- FAZER A VALIDACAO COM CSS AQUI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<!-- https://www.youtube.com/watch?v=srtenF1rFYI&t=607s -->
+
 <form [formGroup]="formularioAlteracaoAluno" (submit)="AlterarAluno()">
     <!-- vinculando inputs as propriedade da classe 'cliente' para que as informacoes sejam enviadas para a api -->
     <fieldset>
@@ -12,7 +15,7 @@
                 <label for="id" class="form-label">Id</label>
                 <input type="text" class="form-control" [attr.disabled]="true" formControlName="id" placeholder="Id" required="">
                 <div class="invalid-feedback">
-                Nome is required.
+                    Id is required.
                 </div>
             </div>
             <!-- nome -->
@@ -20,7 +23,7 @@
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" formControlName="nome" placeholder="Nome" required="">
                 <div class="invalid-feedback">
-                Nome is required.
+                    Nome is required.
                 </div>
             </div>
             <!-- sobrenome -->
@@ -28,7 +31,7 @@
                 <label for="sobrenome" class="form-label">Sobrenome</label>
                 <input type="text" class="form-control" formControlName="sobrenome" placeholder="Sobrenome" required="">
                 <div class="invalid-feedback">
-                Sobrenome is required.
+                    Sobrenome is required.
                 </div>
             </div>
             <!-- email -->
@@ -36,7 +39,7 @@
                 <label for="email" class="form-label">Email</label>
                 <input type="text" class="form-control" formControlName="email" placeholder="Email" required="">
                 <div class="invalid-feedback">
-                Email is required.
+                    Email is required.
                 </div>
             </div>
             <!-- telefone -->

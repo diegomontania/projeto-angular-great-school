@@ -33,15 +33,15 @@
             <div class="col-sm-6">
                 <label for="telefone" class="form-label">Telefone</label>
                 <!-- https://pt.stackoverflow.com/a/453697/200879 -->
-                <input type="text" class="form-control" formControlName="telefone" placeholder="Telefone com DDD : Ex (21) 99999-8888" required="" mask="(00) 0000-0000 || (00) 00000-0000">
+                <input type="text" class="form-control" formControlName="telefone" placeholder="Telefone com DDD : Ex (21) 99999-8888" required="" mask="(00) 0000-0000 || (00) 00000-0000" [dropSpecialCharacters]="false">
                 <div class="invalid-feedback">
                     Telefone is required.
                 </div>
             </div>
             <!-- estado -->
             <div class="col-6">
-                <label for="estado" class="form-label">Estado</label> 
-                <input type="text" class="form-control" formControlName="estado" placeholder="Estado">
+                <label for="estado" class="form-label">Estado</label>
+                <input type="text" class="form-control" formControlName="estado" placeholder="Estado" required="" maxlength="2">
                 <div class="invalid-feedback">
                     Estado is required.
                 </div>
@@ -49,13 +49,13 @@
             <!-- Matricula -->
             <div class="col-6">
                 <label for="estado" class="form-label">Data Matricula</label>
-                <input type="text" class="form-control" formControlName="dataMatricula" placeholder="Data Matricula" bsDatepicker [daysDisabled]="[6,0]" [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }">
+                <input type="text" class="form-control" formControlName="dataMatricula" placeholder="Data Matricula" bsDatepicker [daysDisabled]="[6,0]" [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }" readonly>
                 <div class="invalid-feedback">
                     Matricula is required.
                 </div>
             </div>
         </div>
-        
+
         <!-- chama funcao Salvar que requisita a api e deixa o botao desabilitado se a propriedade 'nome' estiver vazia -->
         <button class="btn btn-success" style="margin-top: 10px" [disabled]="!formularioCadastroAluno.valid" type="submit">Salvar</button>
     </fieldset>
