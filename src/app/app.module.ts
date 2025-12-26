@@ -31,6 +31,7 @@ import { FooterComponent } from './Nested-Components/footer/footer.component';
 import { AlunosListaComponent } from './Nested-Components/alunos-lista/alunos-lista.component';
 import { AlunoComponent } from './Nested-Components/aluno/aluno.component';
 import { FormCadastroComponent } from './Nested-Components/form-cadastro/form-cadastro.component';
+import { ConfirmModalComponent } from './Nested-Components/confirm-modal/confirm-modal.component';
 
 // importando icones utilizados para ngx-boostrap-icons
 const icons = {
@@ -42,7 +43,7 @@ const icons = {
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
-  declarations: [						
+  declarations: [
     AppComponent,
     AlunosComponent,
     ProfessoresComponent,
@@ -54,7 +55,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     FooterComponent,
     AlunosListaComponent,
     AlunoComponent,
-    FormCadastroComponent
+    FormCadastroComponent,
+    ConfirmModalComponent
    ],
   imports: [
     BrowserModule,

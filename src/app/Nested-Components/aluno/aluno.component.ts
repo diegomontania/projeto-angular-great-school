@@ -64,7 +64,7 @@ export class AlunoComponent implements OnInit {
         estado : this.aluno.estado,
         dataMatricula : this.aluno.dataMatricula,
       }
-    ); 
+    );
   }
 
   AlterarAluno(): void {
@@ -76,11 +76,11 @@ export class AlunoComponent implements OnInit {
 
         //passa para o metodo do componente pai o objeto eventEmitter com um parametro
         this.ExibeMensagemAposAcao.emit({param1: true});
-        
+
         //para evitar erro das rotas no OnDestroy
         this._subscriptionServico.unsubscribe();
       },
-      
+
       //caso ocorra um erro, armazena em uma arrow function
       //e passa para uma variavel armazene-o para exibir no log
       error: err => {

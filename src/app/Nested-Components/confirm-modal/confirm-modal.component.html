@@ -1,0 +1,9 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Confirmação</h4>
+</div>
+<div class="modal-body text-center">
+  <p>{{ mensagem }}</p>
+  <hr>
+  <button type="button" class="btn btn-default" (click)="confirmar(false)">Não</button>
+  <button type="button" class="btn btn-primary" (click)="confirmar(true)">Sim</button>
+</div>

@@ -8,6 +8,7 @@ import { catchError, Observable, tap, throwError } from 'rxjs';
 
 import { Aluno } from '../Models/Aluno';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,15 +35,6 @@ export class AlunosService {
   public CriaNovoAluno(aluno: Aluno): Observable<Aluno>{
     debugger
 
-    // precisam ser feitas validacoes corretas no formulario
-    // para enviar os dados ja formatados ao backend
-
-    //temporario, o backend esta com regex no campo de telefone
-    //aluno.telefone = '(21) 97213-2706'
-
-    //temporario, o backend esta com limitacao de caracter no estado
-    //aluno.estado = 'rj'
-
     return this.http.post<Aluno>(this.UrlAPI(), aluno).pipe(
       tap(data => console.log('All: ', JSON.stringify(data))),
       catchError(this.recebeErros)
@@ -50,8 +42,6 @@ export class AlunosService {
   }
 
   public AtualizaAluno(aluno: Aluno): Observable<Aluno>{
-    // debugger
-    // return this.http.put<Aluno>(this.UrlAPI(aluno.id.toString()), aluno, this.httpOptions);
     return this.http.put<Aluno>(this.UrlAPI(aluno.id), aluno, this.httpOptions).pipe(
       tap(data => console.log('All: ', JSON.stringify(data))),
       catchError(this.recebeErros)
@@ -59,8 +49,6 @@ export class AlunosService {
   }
 
   public DeletaAluno(alunoId: string): Observable<Aluno>{
-    // debugger
-    // return this.http.delete<Aluno>(this.UrlAPI(alunoId), this.httpOptions);
     return this.http.delete<Aluno>(this.UrlAPI(alunoId), this.httpOptions).pipe(
       tap(data => console.log(data)),
       catchError(this.recebeErros)
